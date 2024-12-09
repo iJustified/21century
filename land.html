@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21century</title>
+  </head>
+  <body style="margin: 0 auto">
+    <main class="main">
+      <p class="main-p">
+        Вариант 1
+
+        <br />
+        <br />
+        Рисуем карту и зоны участоков на ней. Зоны будут кликабельны, по клику открывается попап.
+        <br />
+        <br />
+        Можно кликать на зоны для примера.
+        <br />
+        <br />
+        Минусы - картинку нельзя двигать, как карту, увеличивать или уменьшать. Для телефонов такая версия не подойдет, зоны будут слишком маленькими на мобильных экранах.
+      </p>
+      <div class="map-img">
+        <img src="map-img-2-min.jpg" alt="map" />
+        <div class="dot dot-1" data-popup="popup1"><p>Участок 1</p></div>
+        <div class="dot dot-2" data-popup="popup2"><p>Участок 2</p></div>
+        <div class="dot dot-3" data-popup="popup3"><p>Участок 3</p></div>
+        <div class="dot dot-4" data-popup="popup4"><p>Участок 4</p></div>
+      </div>
+
+      <!-- Попапы -->
+      <div class="popup" id="popup1">
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <h2>Информация об участке 1</h2>
+          <p>Описание для участка 1.</p>
+        </div>
+      </div>
+
+      <div class="popup" id="popup2">
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <h2>Информация об участке 2</h2>
+          <p>Описание для участка 2.</p>
+        </div>
+      </div>
+
+      <div class="popup" id="popup3">
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <h2>Информация об участке 3</h2>
+          <p>Описание для участка 3.</p>
+        </div>
+      </div>
+
+      <div class="popup" id="popup4">
+        <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <h2>Информация об участке 4</h2>
+          <p>Описание для участка 4.</p>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      * {
+        font-family: Arial, sans-serif;
+        padding: 0;
+        margin: 0;
+        text-decoration: 0;
+        box-sizing: border-box;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .main {
+        margin: 50px auto;
+        position: relative;
+      }
+      .main-p {
+        font-size: 16px;
+        line-height: 130%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .map-img {
+        position: relative;
+        max-width: 1000px;
+        margin: 50px auto;
+        border: 1px solid #000000;
+      }
+      .dot {
+        cursor: pointer;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .dot p {
+        text-transform: uppercase;
+        color: #000000;
+        background-color: #ffffff;
+        padding: 5px;
+        display: none;
+      }
+      .dot:hover p {
+        display: block;
+      }
+      .dot-1 {
+        width: 120px;
+        height: 110px;
+        top: 30%;
+        left: 39%;
+      }
+      .dot-2 {
+        width: 120px;
+        height: 95px;
+        top: 33.5%;
+        left: 51.5%;
+      }
+      .dot-3 {
+        width: 160px;
+        height: 145px;
+        top: 45%;
+        left: 35%;
+      }
+      .dot-4 {
+        width: 115px;
+        height: 140px;
+        top: 47%;
+        left: 52%;
+      }
+
+      /* Стили попапа */
+      /* Попап */
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+      }
+
+      .popup-content {
+        background: white;
+        width: 600px;
+        margin: 10% auto;
+        padding: 200px;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 50px;
+        cursor: pointer;
+        color: #555;
+      }
+
+      .close-btn:hover {
+        color: red;
+      }
+      @media (max-width: 1023px) {
+        .main {
+          margin: 50px auto;
+          position: relative;
+        }
+        .map-img {
+          max-width: 700px;
+          margin: 0 auto;
+        }
+        .dot-1 {
+          width: 90px;
+          height: 80px;
+          top: 29%;
+          left: 38.5%;
+        }
+        .dot-2 {
+          width: 75px;
+          height: 80px;
+          top: 31.5%;
+          left: 52.5%;
+        }
+        .dot-3 {
+          width: 115px;
+          height: 105px;
+          top: 45%;
+          left: 35%;
+        }
+        .dot-4 {
+          width: 75px;
+          height: 100px;
+          top: 46.5%;
+          left: 52.5%;
+        }
+        .popup-content {
+          width: 400px;
+          padding: 100px;
+        }
+      }
+    </style>
+
+    <script>
+      // Получаем все точки и попапы
+      const dots = document.querySelectorAll(".dot");
+      const closeButtons = document.querySelectorAll(".close-btn");
+      const popups = document.querySelectorAll(".popup");
+
+      // Открытие попапа по клику на точку
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const popupId = dot.getAttribute("data-popup");
+          const popup = document.getElementById(popupId);
+          if (popup) popup.style.display = "block";
+        });
+      });
+
+      // Закрытие попапа по клику на кнопку закрыть
+      closeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          btn.closest(".popup").style.display = "none";
+        });
+      });
+
+      // Закрытие попапа при клике вне его области
+      window.addEventListener("click", (event) => {
+        popups.forEach((popup) => {
+          if (event.target === popup) {
+            popup.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
